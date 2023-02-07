@@ -1,30 +1,39 @@
 package it.volta.ts.swingapp.ui;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import it.volta.ts.swingapp.ui.components.*;
+
 public class MySwingFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel contentPane2;
 
 	/**
 	 * Create the frame.
 	 */
 	public MySwingFrame() {
+		super();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.setMinimumSize(new Dimension(500, 400));
+
+		JComponent container = new JPanel();
+		container.setLayout(new FlowLayout());
+
+		contentPane = new TestoEBottoneComponent("Etichetta per il bottone 1", "Do Nothing");
+		contentPane2 = new InputEBottoneCercaComponent("Cerca il file");
 		
-		JButton b1 = new JButton("Bottone1");
-		contentPane.setLayout(new FlowLayout());
-		contentPane.add(b1);
-		b1.setVisible(true);
-		
-		
-		setContentPane(contentPane);
+		container.add(contentPane);
+		container.add(contentPane2);
+		setContentPane(container);
+
+		// pack();
+
 	}
 
 }
